@@ -40,15 +40,15 @@ class Car {
 
   accelerate = (newSpeed) => {
     this.speed = this.speed + newSpeed;
-    mycar.checkMotion();
+    this.checkMotion();
   };
   brake = (slowSpeed) => {
     this.speed < slowSpeed ? (this.speed = 0) : (this.speed = this.speed - slowSpeed);
-    mycar.checkMotion();
+    this.checkMotion();
   };
   emergencyBrake = () => {
     this.speed = 0;
-    mycar.checkMotion();
+    this.checkMotion();
   };
   status = () => {
     return `this car ${this.brand} ${this.model}, speed is ${this.speed}km/h, Car status ${this.motion}`;
@@ -65,26 +65,44 @@ console.log(mycar.status());
 
 //Task 4
 
-function addAsync(firstNum, secondNum) {
-  const addAsyncPromise = new Promise((resolve, reject) => {
+// function addAsync(firstNum, secondNum) {
+//   const addAsyncPromise = new Promise((resolve, reject) => {
+//     if (!isNaN(firstNum) && !isNaN(secondNum) && firstNum != undefined && secondNum != undefined) {
+//       resolve();
+//     } else {
+//       reject("error");
+//     }
+//   });
+//   addAsyncPromise
+//     .then(() => {
+//       console.log("good");
+//     })
+//     .catch(() => {
+//       console.log("error");
+//     });
+// }
+
+// addAsync(3, 5);
+// addAsync(3, 5);
+// addAsync(55);
+// addAsync(3, "hmm");
+
+//EndTask 4
+
+//new Task 4
+
+const addAsync = (firstNum, secondNum) => {
+  return new Promise((resolve, reject) => {
     if (!isNaN(firstNum) && !isNaN(secondNum) && firstNum != undefined && secondNum != undefined) {
-      resolve();
+      resolve(firstNum + secondNum);
     } else {
       reject("error");
     }
   });
-  addAsyncPromise
-    .then(() => {
-      console.log("good");
-    })
-    .catch(() => {
-      console.log("error");
-    });
-}
+};
 
-addAsync(3, 5);
-addAsync(3, 5);
-addAsync(55);
-addAsync(3, "hmm");
+addAsync(10, 22)
+  .then((sumValue) => console.log(sumValue))
+  .catch((error) => console.log(error));
 
 //EndTask 4
